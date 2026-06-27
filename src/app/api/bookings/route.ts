@@ -148,7 +148,15 @@ async function sendEmails(params: {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { duration_hours, start_datetime, delivery_address, customer_name, customer_phone, customer_email } = body;
+    const { duration_hours, start_datetime, delivery_address, customer_name, customer_phone, customer_email, cgv_accepted } = body;
+
+    // Validation CGV
+    if (cgv_accepted !== true) {
+      return NextResponse.json(
+        { error: "Vous devez accepter les Conditions Générales de Vente pour réserver." },
+        { status: 400 }
+      );
+    }
 
     // Validation des champs obligatoires
     if (!duration_hours || !start_datetime || !delivery_address || !customer_name || !customer_phone || !customer_email) {

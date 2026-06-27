@@ -44,6 +44,7 @@ export default function Home() {
   const [customerEmail, setCustomerEmail]             = useState("");
   const [isSubmitting, setIsSubmitting]               = useState(false);
   const [error, setError]                             = useState<string | null>(null);
+  const [acceptCGV, setAcceptCGV]                     = useState(false);
 
   const goNext = () => setStep((s) => Math.min(s + 1, TOTAL_STEPS) as Step);
   const goBack = () => setStep((s) => Math.max(s - 1, 1) as Step);
@@ -119,7 +120,7 @@ export default function Home() {
   const step2Ready    = selectedDuration !== null && deliveryDate !== "" && deliveryStartTime !== "";
   const addressReady  = deliveryAddress.trim().length > 3;
   const customerReady = customerName.trim().length >= 2 && customerPhone.trim().length >= 6 && customerEmail.includes("@");
-  const canBook       = step2Ready && addressReady && customerReady;
+  const canBook       = step2Ready && addressReady && customerReady && acceptCGV;
 
   const handleSelectKayak = () => { setKayakSelected(true); setTimeout(goNext, 420); };
 
@@ -140,6 +141,7 @@ export default function Home() {
           customer_name:    customerName.trim(),
           customer_phone:   customerPhone.trim(),
           customer_email:   customerEmail.trim(),
+          cgv_accepted:     true,
         }),
       });
       const data = await res.json();
@@ -470,6 +472,23 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
+              {/* Checkbox CGV */}
+              <label className="flex items-start gap-3 mb-4 cursor-pointer group">
+                <div className="relative shrink-0 mt-0.5">
+                  <input type="checkbox" checked={acceptCGV} onChange={(e) => setAcceptCGV(e.target.checked)} className="sr-only" />
+                  <div className={`w-5 h-5 border-2 flex items-center justify-center transition-colors ${acceptCGV ? "bg-[#192ee2] border-[#192ee2]" : "border-slate-300 group-hover:border-slate-500"}`}>
+                    {acceptCGV && <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5L4.5 8.5L9.5 2.5" stroke="white" strokeWidth="2" strokeLinecap="square"/></svg>}
+                  </div>
+                </div>
+                <span className="text-slate-500 text-xs font-medium leading-relaxed">
+                  J&apos;ai lu et j&apos;accepte sans réserve les{" "}
+                  <a href="/conditions-generales" target="_blank" className="text-[#192ee2] font-bold underline underline-offset-2 hover:text-blue-700">
+                    Conditions Générales de Vente (CGV)
+                  </a>
+                  , je certifie savoir nager et m&apos;engage à porter le gilet de sauvetage obligatoire fourni.
+                </span>
+              </label>
 
               {error && <div className="bg-red-50 border-l-4 border-red-500 px-4 py-3 text-red-700 text-sm font-semibold mb-4">{error}</div>}
 
