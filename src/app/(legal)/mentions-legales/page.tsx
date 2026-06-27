@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mentions Légales — Kayak Tahiti",
+  title: "Mentions Légales — Kayak-Tahiti-Delivery",
 };
 
 function Section({ label, title, children }: { label: string; title: string; children: React.ReactNode }) {
@@ -49,7 +49,7 @@ export default function MentionsLegalesPage() {
       {/* Éditeur */}
       <Section label="01 — Éditeur du site" title="Identité de l'éditeur">
         <div className="bg-slate-50 border border-slate-200 divide-y divide-slate-200">
-          <Row label="Nom commercial"  value="KAYAK TAHITI ON-DEMAND — Kevin DECIAN" />
+          <Row label="Nom commercial"  value="Kayak-Tahiti-Delivery — Kevin DECIAN" />
           <Row label="Statut"          value="Exploitant individuel — En cours d'immatriculation auprès de la CCISM de Papeete (Numéro TAHITI / TPI en attente de délivrance)" />
           <Row label="Domiciliation"   value="Tahiti, Polynésie française" />
           <Row label="Email"           value="kevindecian01@gmail.com" />

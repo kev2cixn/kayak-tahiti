@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politique de Confidentialité — Kayak Tahiti",
+  title: "Politique de Confidentialité — Kayak-Tahiti-Delivery",
 };
 
 function Section({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
@@ -84,7 +84,7 @@ export default function ConfidentialitePage() {
       <Section num="01" title="Responsable du Traitement">
         <p>
           Le responsable du traitement des données personnelles est{" "}
-          <strong className="text-slate-950">KAYAK TAHITI ON-DEMAND — Kevin DECIAN</strong>,
+          <strong className="text-slate-950">Kayak-Tahiti-Delivery — Kevin DECIAN</strong>,
           exploitant individuel domicilié en Polynésie française.
         </p>
         <p>
@@ -151,7 +151,7 @@ export default function ConfidentialitePage() {
       <Section num="04" title="Non-Partage des Données">
         <p>
           Vos données personnelles sont traitées exclusivement par l'équipe de{" "}
-          <strong className="text-slate-950">KAYAK TAHITI ON-DEMAND</strong> aux fins décrites ci-dessus.
+          <strong className="text-slate-950">Kayak-Tahiti-Delivery</strong> aux fins décrites ci-dessus.
         </p>
         <div className="bg-slate-50 border border-slate-200 space-y-0 divide-y divide-slate-200">
           {[

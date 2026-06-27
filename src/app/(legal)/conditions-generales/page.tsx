@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Conditions Générales de Vente — Kayak Tahiti",
+  title: "Conditions Générales de Vente — Kayak-Tahiti-Delivery",
 };
 
 function Article({
@@ -74,7 +74,7 @@ export default function ConditionsGeneralesPage() {
           </p>
           <p className="text-sm font-semibold leading-relaxed text-slate-300">
             Les présentes CGVR régissent l'ensemble des prestations de location et de livraison de kayak solo
-            proposées par <strong className="text-white">KAYAK TAHITI ON-DEMAND — Kevin DECIAN</strong>, exploitant individuel basé à Tahiti,
+            proposées par <strong className="text-white">Kayak-Tahiti-Delivery — Kevin DECIAN</strong>, exploitant individuel basé à Tahiti,
             Polynésie française. Toute réservation en ligne vaut acceptation expresse et irrévocable des présentes conditions.
           </p>
         </div>
