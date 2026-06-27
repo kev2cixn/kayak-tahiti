@@ -16,10 +16,31 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Supprime le délai de 300ms et le highlight bleu sur mobile */
+button, [role="button"], a, label {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Empêche le zoom iOS sur les inputs (16px minimum) */
+input, textarea, select {
+  font-size: max(16px, 1rem);
+}
+
+/* Cache la scrollbar tout en gardant le scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {

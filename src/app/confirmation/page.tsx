@@ -48,7 +48,7 @@ function ConfirmationContent() {
         </Link>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 pb-28">
         <div className="w-full max-w-2xl">
 
           <div className="flex items-center gap-4 mb-10">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
@@ -9,6 +9,13 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Kayak Tahiti Delivery — Location & Livraison à Domicile",
@@ -29,7 +36,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif" }}
       >
         {children}
-        <footer className="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-sm border-t border-slate-800 px-6 py-2 flex items-center justify-between gap-4">
+        <footer className="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-sm border-t border-slate-800 px-6 pt-2 flex items-center justify-between gap-4" style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}>
           <span className="text-slate-500 text-[10px] font-semibold shrink-0">© Kayak Tahiti Delivery</span>
           <div className="flex gap-4">
             <Link href="/contact" className="text-slate-300 hover:text-white text-[10px] font-black transition-colors">Contact</Link>

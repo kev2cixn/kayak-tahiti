@@ -187,7 +187,7 @@ export default function Home() {
 
           {/* ══ ÉTAPE 1 — KAYAK ══ */}
           <div className="overflow-y-auto" style={{ width: `${100 / TOTAL_STEPS}%` }}>
-            <div className="max-w-2xl mx-auto px-6 pt-12 pb-20">
+            <div className="max-w-2xl mx-auto px-6 pt-10 pb-28">
               <div className="mb-10">
                 <p className="text-[#192ee2] text-[9px] font-black tracking-[0.35em] uppercase mb-4">Étape 1 · Votre équipement</p>
                 <h1 className="font-black tracking-tighter leading-none text-slate-950" style={{ fontSize: "clamp(3rem,9vw,6rem)" }}>VOTRE<br />KAYAK.</h1>
@@ -225,7 +225,7 @@ export default function Home() {
 
           {/* ══ ÉTAPE 2 — FORMULE · DATE · HORAIRE ══ */}
           <div className="overflow-y-auto" style={{ width: `${100 / TOTAL_STEPS}%` }}>
-            <div className="max-w-2xl mx-auto px-6 pt-12 pb-20">
+            <div className="max-w-2xl mx-auto px-6 pt-10 pb-28">
 
               <div className="mb-8">
                 <p className="text-[#192ee2] text-[9px] font-black tracking-[0.35em] uppercase mb-4">Étape 2 · Formule & Horaire</p>
@@ -259,10 +259,10 @@ export default function Home() {
                       </div>
                       <div className="flex items-center gap-4 mt-5" onClick={(e) => e.stopPropagation()}>
                         <button onClick={() => { setSelectedDuration("hourly"); setSelectedHours((h) => Math.max(1, h - 1)); }}
-                          className={`w-9 h-9 flex items-center justify-center font-black text-lg border-2 transition-colors ${active ? "border-blue-300 text-white hover:bg-blue-700" : "border-slate-300 text-slate-700 hover:border-slate-950"} ${selectedHours <= 1 ? "opacity-30 pointer-events-none" : ""}`}>−</button>
+                          className={`w-11 h-11 flex items-center justify-center font-black text-xl border-2 transition-colors active:scale-95 ${active ? "border-blue-300 text-white hover:bg-blue-700" : "border-slate-300 text-slate-700 hover:border-slate-950"} ${selectedHours <= 1 ? "opacity-30 pointer-events-none" : ""}`}>−</button>
                         <span className={`font-black text-sm tracking-widest ${active ? "text-white" : "text-slate-950"}`}>{selectedHours}h · {price.toLocaleString("fr-FR")} XPF</span>
                         <button onClick={() => { setSelectedDuration("hourly"); setSelectedHours((h) => Math.min(3, h + 1)); }}
-                          className={`w-9 h-9 flex items-center justify-center font-black text-lg border-2 transition-colors ${active ? "border-blue-300 text-white hover:bg-blue-700" : "border-slate-300 text-slate-700 hover:border-slate-950"} ${selectedHours >= 3 ? "opacity-30 pointer-events-none" : ""}`}>+</button>
+                          className={`w-11 h-11 flex items-center justify-center font-black text-xl border-2 transition-colors active:scale-95 ${active ? "border-blue-300 text-white hover:bg-blue-700" : "border-slate-300 text-slate-700 hover:border-slate-950"} ${selectedHours >= 3 ? "opacity-30 pointer-events-none" : ""}`}>+</button>
                         {selectedHours >= 3 && <span className={`text-[10px] font-bold ${active ? "text-blue-200" : "text-slate-400"}`}>max · voir Demi-journée ↓</span>}
                       </div>
                     </div>
@@ -317,7 +317,8 @@ export default function Home() {
                 <>
                   <div className="mb-5">
                     <label className="block text-[9px] font-black tracking-[0.3em] uppercase text-slate-500 mb-2">Date de livraison</label>
-                    <div className="flex gap-px bg-slate-200 border border-slate-200 overflow-x-auto">
+                    <div className="flex gap-px bg-slate-200 border border-slate-200 overflow-x-auto scrollbar-hide scroll-smooth"
+                      style={{ WebkitOverflowScrolling: "touch" }}>
                       {dateOptions.map((d) => (
                         <button key={d.iso} type="button" onClick={() => setDeliveryDate(d.iso)}
                           className={`flex-shrink-0 flex flex-col items-center py-3 px-4 min-w-[4.5rem] font-black transition-colors ${deliveryDate === d.iso ? "bg-[#192ee2] text-white" : "bg-white text-slate-700 hover:bg-slate-50"}`}>
@@ -350,7 +351,7 @@ export default function Home() {
                         <div className="grid grid-cols-4 gap-px bg-slate-200 border border-slate-200">
                           {timeSlots.map((slot) => (
                             <button key={slot.value} type="button" disabled={slot.isBlocked} onClick={() => !slot.isBlocked && setDeliveryStartTime(slot.value)}
-                              className={`py-3.5 text-center font-black text-sm tracking-tight transition-colors ${
+                              className={`py-4 text-center font-black text-sm tracking-tight transition-colors active:scale-95 ${
                                 slot.isBlocked ? "bg-slate-100 text-slate-300 cursor-not-allowed line-through"
                                 : deliveryStartTime === slot.value ? "bg-[#192ee2] text-white"
                                 : "bg-white text-slate-700 hover:bg-slate-50"}`}>
@@ -390,7 +391,7 @@ export default function Home() {
 
           {/* ══ ÉTAPE 3 — LIVRAISON ══ */}
           <div className="overflow-y-auto" style={{ width: `${100 / TOTAL_STEPS}%` }}>
-            <div className="max-w-2xl mx-auto px-6 pt-12 pb-8">
+            <div className="max-w-2xl mx-auto px-6 pt-10 pb-28">
               <div className="mb-8">
                 <p className="text-[#192ee2] text-[9px] font-black tracking-[0.35em] uppercase mb-4">Étape 3 · Lieu de livraison</p>
                 <div className="flex items-baseline gap-4">
@@ -415,7 +416,7 @@ export default function Home() {
                 </label>
                 <textarea value={deliveryNotes} onChange={(e) => setDeliveryNotes(e.target.value)} rows={2}
                   placeholder={"Ex : Servitude après le conteneur vert, côté mer\nEx : Appeler à l'arrivée, portail blanc"}
-                  className="w-full border-2 border-slate-200 focus:border-[#192ee2] bg-slate-50 px-4 py-3.5 text-slate-950 font-medium text-sm placeholder:text-slate-300 outline-none transition-colors resize-none leading-snug" />
+                  className="w-full border-2 border-slate-200 focus:border-[#192ee2] bg-slate-50 px-4 py-3.5 text-slate-950 font-medium text-base placeholder:text-slate-300 outline-none transition-colors resize-none leading-snug" />
               </div>
 
               <div style={{ opacity: addressReady ? 1 : 0, transform: addressReady ? "translateY(0)" : "translateY(10px)", transition: "opacity 0.3s ease, transform 0.3s ease", pointerEvents: addressReady ? "auto" : "none" }}>
@@ -428,7 +429,7 @@ export default function Home() {
 
           {/* ══ ÉTAPE 4 — COORDONNÉES ══ */}
           <div className="overflow-y-auto" style={{ width: `${100 / TOTAL_STEPS}%` }}>
-            <div className="max-w-2xl mx-auto px-6 pt-12 pb-10">
+            <div className="max-w-2xl mx-auto px-6 pt-10 pb-28">
               <div className="mb-8">
                 <p className="text-[#192ee2] text-[9px] font-black tracking-[0.35em] uppercase mb-4">Étape 4 · Vos coordonnées</p>
                 <div className="flex items-baseline gap-4">
@@ -512,7 +513,7 @@ function RecapRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="px-5 py-3 flex justify-between items-start gap-4">
       <span className="text-slate-500 text-xs font-black uppercase tracking-widest shrink-0">{label}</span>
-      <span className="text-white font-semibold text-sm text-right truncate max-w-[200px]">{value}</span>
+      <span className="text-white font-semibold text-sm text-right break-words max-w-[55%]">{value}</span>
     </div>
   );
 }
