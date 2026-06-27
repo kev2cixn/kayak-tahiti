@@ -243,7 +243,7 @@ export async function POST(req: NextRequest) {
 
     const bookingRef = data.id.slice(0, 8).toUpperCase();
 
-    sendEmails({
+    await sendEmails({
       bookingRef,
       customerName:    customer_name.trim(),
       customerPhone:   customer_phone.trim(),
@@ -254,7 +254,7 @@ export async function POST(req: NextRequest) {
       cleanupEndTime:  cleanupEndISO,
       durationHours:   durationH,
       totalPrice:      total_price,
-    });
+    }).catch((e) => console.error("sendEmails error:", e));
 
     return NextResponse.json(data, { status: 201 });
   } catch (err) {
